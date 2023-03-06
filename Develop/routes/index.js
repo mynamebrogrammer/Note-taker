@@ -1,8 +1,11 @@
 const express = require('express');
 
-const notesRouter = require('./routes/notesRouter');
+
+const notesRouter = require('./notesRouter');
 
 const app = express();
+
+app.use(express.json());
 
 app.use('/notes', notesRouter);
 

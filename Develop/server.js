@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
+
+
 const api = require('./routes/index.js');
 
 const port = process.env.PORT || 3001;
@@ -19,7 +20,6 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, './public/index.htm
 
 // GET route for notes page
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, './public/notes.html')));
-
 
 
 // Default response for any other request (Not Found)
