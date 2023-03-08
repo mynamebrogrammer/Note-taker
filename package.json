@@ -5,6 +5,9 @@
   "main": "server.js",
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
   "dependencies": {
     "express": "^4.16.4",
     "mysql": "^2.18.1",
