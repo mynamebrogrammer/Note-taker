@@ -116,11 +116,16 @@ const handleRenderSaveBtn = () => {
   }
 };
 
+
 // Render the list of note titles
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
-  if (window.location.pathname === '/notes') {
-    noteList.forEach((el) => (el.innerHTML = ''));
+  if (window.location.pathname === '/notes' && activeNote.id === notes.id) { 
+    noteList.forEach((el) => {
+      (el.innerHTML = '')
+      console.log(el.dataset.note);
+    });
+
   }
 
   let noteListItems = [];
@@ -161,15 +166,22 @@ const renderNoteList = async (notes) => {
   jsonNotes.forEach((note) => {
     const li = createLi(note.title);
     li.dataset.note = JSON.stringify(note);
-
+    // console.log(li.dataset.note);
+    li.addEventListener('click', popNote);
     noteListItems.push(li);
+
   });
 
   if (window.location.pathname === '/notes') {
     noteListItems.forEach((note) => noteList[0].append(note));
   }
 };
-
+function popNote (event){
+  let note = JSON.parse(event.target.parentElement.dataset.note);
+  console.log(note);
+  noteTitle.value = note.title;
+  noteText.value = note.text;
+}
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
