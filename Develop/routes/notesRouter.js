@@ -5,7 +5,7 @@ const { query } = require('express');
 
 // GET route for retrieving all notes
 allNotes.get('/', (req, res) => {
-    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+    readFromFile('./Develop/db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
 // POST route for a new note
@@ -21,7 +21,7 @@ allNotes.post('/', (req, res) => {
             note_id: uuidv4(),
         };
 
-        readAndAppend(newNote, './db/db.json');
+        readAndAppend(newNote, './Develop/db/db.json');
         res.json(`Note added successfully 🚀`);
     } else {
         res.error('Error in adding note');
@@ -40,7 +40,7 @@ allNotes.put('/', (req, res) => {
             note_id: uuidv4(),
         };
 
-        readAndAppend(newNote, './db/db.json');
+        readAndAppend(newNote, './Develop/db/db.json');
         res.json(`Note added successfully 🚀`);
     } else {
         res.error('Error in adding note');
@@ -51,10 +51,10 @@ allNotes.put('/', (req, res) => {
 allNotes.delete('/:id', (req, res) => {
     const noteId = req.params.id;
     console.log(noteId);
-    readFromFile('./db/db.json').then((data) => {
+    readFromFile('./Develop/db/db.json').then((data) => {
         const allNotes = JSON.parse(data);
         const newNotes = allNotes.filter((note) => note.id !== noteId);
-        writeToFile('./db/db.json', newNotes);
+        writeToFile('./Develop/db/db.json', newNotes);
         res.json(`Note ${noteId} has been deleted 🗑️`);
     });
 });
