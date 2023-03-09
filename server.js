@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const path = require("path");
 
 const api = require("./Develop/routes/index.js");
@@ -22,6 +23,7 @@ app.get("/", (req, res) =>
 app.get("/notes", (req, res) =>
   res.sendFile(path.join(__dirname, "./Develop/public/notes.html"))
 );
+
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {

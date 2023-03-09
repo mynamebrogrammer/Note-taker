@@ -1,4 +1,4 @@
-# Note Taker Application
+# Note-Scheduler
 
 ## Description
 
@@ -9,6 +9,8 @@ This application is a note taker that allows the user to write, save, and delete
 * [Installation](#installation)
 
 * [Usage](#usage)
+
+* [Demo](#demo)
 
 * [License](#license)
 
@@ -31,6 +33,10 @@ npm i
 ## Usage
 
 This application is used to write, save, and delete notes. This application uses an express backend and saves and retrieves note data from a JSON file.
+
+## Demo
+
+here is a link to the deployed application: [Note-taker-habib](https://note-taker-habib.herokuapp.com//)
 
 ## License
 
