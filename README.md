@@ -41,6 +41,8 @@ here is a link to the deployed application: [Note-taker-habib](https://note-take
 image of the application:
 
 ![Note-taker-habib](/Develop/public/assets/img/Screenshot-notes.png)
+![Note-taker-habib](/Develop/public/assets/img/notes-3.png)
+![Note-taker-habib](/Develop/public/assets/img/notes-2.png)
 
 ## License
 
