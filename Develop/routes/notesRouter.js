@@ -53,12 +53,6 @@ allNotes.delete('/:id', (req, res) => {
     console.log(noteId);
 
     if (req.body) {
-        const newNote = {
-            title: req.body.title,
-            text: req.body.text,
-            id: uuidv4(),
-        };
-        readAndAppend(newNote, './Develop/db/db.json');
         readFromFile('./Develop/db/db.json').then((data) => {
         const allNotes = JSON.parse(data);
         const newNotes = allNotes.filter((note) => note.id !== noteId);
@@ -68,7 +62,5 @@ allNotes.delete('/:id', (req, res) => {
     } else { 
         res.error('Error in deleting note');
     }
-
-    
 });
 module.exports = allNotes;
