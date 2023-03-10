@@ -5,6 +5,7 @@ const { query } = require('express');
 
 // GET route for retrieving all notes
 allNotes.get('/', (req, res) => {
+    console.info(`${req.method} request received for notes`);
     readFromFile('./Develop/db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
@@ -17,7 +18,7 @@ allNotes.post('/', (req, res) => {
         const newNote = {
             title,
             text,
-            note_id: uuidv4(),
+            id: uuidv4(),
         };
 
         readAndAppend(newNote, './Develop/db/db.json');
@@ -35,7 +36,7 @@ allNotes.put('/', (req, res) => {
         const newNote = {
             title,
             text,
-            note_id: uuidv4(),
+            id: uuidv4(),
         };
 
         readAndAppend(newNote, './Develop/db/db.json');
@@ -46,15 +47,15 @@ allNotes.put('/', (req, res) => {
 });
 
 // DELETE route for a specific note
-allNotes.delete('/', (req, res) => {
+allNotes.delete('/:id', (req, res) => {
     const noteId = req.params.id;
     console.log(noteId);
 
     if (req.body) {
         const newNote = {
-            title,
-            text,
-            note_id: uuidv4(),
+            title: req.body.title,
+            text: req.body.text,
+            id: uuidv4(),
         };
         readAndAppend(newNote, './Develop/db/db.json');
         readFromFile('./Develop/db/db.json').then((data) => {
