@@ -3,6 +3,7 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+let noteId;
 
 if (window.location.pathname === "/notes") {
   noteTitle = document.querySelector(".note-title");
@@ -81,24 +82,20 @@ const handleNoteSave = () => {
 // Delete the clicked note
 const handleNoteDelete = (e) => {
   // Prevents the click listener for the list from being called when the button inside of it is clicked
-  e.stopPropagation(e);
-  // let note = JSON.parse(e.target.parentElement.dataset.note);
-  // console.log(note);
-  // console.log(noteId);
-  const note = e.target;
-  let noteId = note.id;
-  
-  console.log(noteId);
+  e.stopPropagation();
 
-  if (activeNote.id === note.id) {
+  const note = e.target;
+  const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+
+  if (activeNote.id === noteId) {
     activeNote = {};
-  };
-  deleteNote(noteId).then((response) => {
-    console.log(response);
+  }
+
+  deleteNote(noteId).then(() => {
     getAndRenderNotes();
     renderActiveNote();
   });
-}
+};
 
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {

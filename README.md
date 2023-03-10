@@ -24,7 +24,7 @@ This application is a note taker that allows the user to write, save, and delete
 
 To install necessary dependencies, run the following command:
 
-```
+```bash
 
 npm i
 
@@ -38,6 +38,10 @@ This application is used to write, save, and delete notes. This application uses
 
 here is a link to the deployed application: [Note-taker-habib](https://note-taker-habib.herokuapp.com//)
 
+image of the application:
+
+![Note-taker-habib](/Develop/public/assets/img/Screenshot-notes.png)
+
 ## License
 
 This project is licensed under the MIT license.
@@ -48,15 +52,8 @@ This application is open to contributions.
 
 ## Tests
 
-To run tests, run the following command:
-
-```
-
-npm test
-
-```
+No tests are available for this application.
 
 ## Questions
 
-If you have any questions about the repo, open an issue or contact me directly at [email](mailto:habibmaksoud@gmail.com). You can find more of my work at [github](https://github.com/mynamebrogrammer)
-
+If you have any questions about the repo, open an issue or contact me directly at my [email](mailto:habibmaksoud@gmail.com). You can find more of my work at [github](https://github.com/mynamebrogrammer)

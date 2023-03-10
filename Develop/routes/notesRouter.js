@@ -11,7 +11,6 @@ allNotes.get('/', (req, res) => {
 // POST route for a new note
 allNotes.post('/', (req, res) => {
     console.log(req.body);
-
     const { title, text } = req.body;
 
     if (req.body) {
@@ -30,7 +29,6 @@ allNotes.post('/', (req, res) => {
 
 allNotes.put('/', (req, res) => {
     console.log(req.body);
-
     const { title, text } = req.body;
 
     if (req.body) {
@@ -48,14 +46,27 @@ allNotes.put('/', (req, res) => {
 });
 
 // DELETE route for a specific note
-allNotes.delete('/:id', (req, res) => {
+allNotes.delete('/', (req, res) => {
     const noteId = req.params.id;
     console.log(noteId);
-    readFromFile('./Develop/db/db.json').then((data) => {
+
+    if (req.body) {
+        const newNote = {
+            title,
+            text,
+            note_id: uuidv4(),
+        };
+        readAndAppend(newNote, './Develop/db/db.json');
+        readFromFile('./Develop/db/db.json').then((data) => {
         const allNotes = JSON.parse(data);
         const newNotes = allNotes.filter((note) => note.id !== noteId);
         writeToFile('./Develop/db/db.json', newNotes);
         res.json(`Note ${noteId} has been deleted 🗑️`);
     });
+    } else { 
+        res.error('Error in deleting note');
+    }
+
+    
 });
 module.exports = allNotes;
